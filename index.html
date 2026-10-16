@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Krishna Selvi | Portfolio</title>
+<meta name="description" content="Krishna Selvi, first-year B.Tech IT student. A portfolio drawn like a comic book.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1b1612; --paper:#f4ead0; --red:#e0412b; --yellow:#f5b91e;
+  --display:"Bangers","Impact","Arial Narrow",sans-serif;
+  --body:"Patrick Hand","Comic Sans MS","Segoe Print",cursive;
+  --ease:cubic-bezier(.2,.9,.25,1.15);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:1.2rem/1.5 var(--body);overflow-x:hidden;
+  background-image:radial-gradient(circle,rgba(27,22,18,.14) 1.3px,transparent 1.7px);background-size:10px 10px}
+body.lock{overflow:hidden}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.03em;line-height:.95}
+a{color:inherit}
+:focus-visible{outline:4px solid var(--red);outline-offset:3px}
+.wrap{width:min(1080px,100% - 2.4rem);margin-inline:auto}
+section{padding:4.5rem 0}
+
+/* comic bits */
+.panel{border:4px solid var(--ink);background:var(--paper);box-shadow:7px 7px 0 var(--ink);position:relative}
+.cap{display:inline-block;background:var(--yellow);border:3px solid var(--ink);padding:.15rem .8rem;font-family:var(--display);font-size:1.15rem;letter-spacing:.06em;transform:rotate(-2deg);box-shadow:3px 3px 0 var(--ink)}
+.bubble{position:relative;background:#fff;border:4px solid var(--ink);border-radius:26px 30px 24px 32px;padding:1rem 1.3rem}
+.bubble::after{content:"";position:absolute;left:34px;bottom:-17px;width:24px;height:24px;background:#fff;border:4px solid var(--ink);border-top:0;border-left:0;transform:rotate(48deg) skew(8deg,8deg)}
+.sec-title{font-size:clamp(2.8rem,11vw,5.5rem);margin:.9rem 0 1.8rem}
+.draw{fill:none;stroke:var(--red);stroke-width:9;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1s cubic-bezier(.6,0,.2,1) .15s}
+.in .draw,.go .draw{stroke-dashoffset:0}
+.reveal{opacity:0;transform:translateY(16px) rotate(var(--r,0deg));transition:opacity .5s ease,transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:rotate(var(--r,0deg))}
+
+/* buttons */
+.btn{display:inline-block;font-family:var(--display);font-size:1.5rem;letter-spacing:.06em;text-decoration:none;color:var(--ink);background:var(--yellow);border:4px solid var(--ink);padding:.5rem 1.4rem;box-shadow:6px 6px 0 var(--ink);cursor:pointer;transition:transform .15s var(--ease),box-shadow .15s ease}
+.btn.red{background:var(--red);color:var(--paper)}
+.btn:hover{transform:translate(-2px,-2px) rotate(-1deg);box-shadow:9px 9px 0 var(--ink)}
+.btn:active{transform:translate(5px,5px);box-shadow:1px 1px 0 var(--ink)}
+
+/* intro */
+#intro{position:fixed;inset:0;z-index:100;background:var(--yellow);display:grid;place-items:center;clip-path:inset(0 0 0 0);transition:clip-path .5s cubic-bezier(.7,0,.3,1)}
+#intro::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(27,22,18,.28) 2px,transparent 2.5px);background-size:14px 14px;-webkit-mask-image:linear-gradient(160deg,#000,transparent 65%);mask-image:linear-gradient(160deg,#000,transparent 65%)}
+#intro.hide{clip-path:inset(0 0 100% 0)}
+#intro .box{position:relative;text-align:center;padding:0 1rem}
+#intro h2{font-size:clamp(3.4rem,16vw,8rem);animation:slam .35s var(--ease) both}
+#intro svg{width:min(78vw,520px);display:block;margin:-.4rem auto 0;overflow:visible}
+#intro .draw{transition-duration:1.1s;transition-delay:.35s}
+#skip{position:absolute;right:1rem;top:1rem;z-index:2;font-size:1.1rem;padding:.2rem .9rem;box-shadow:4px 4px 0 var(--ink)}
+@keyframes slam{from{transform:scale(1.6) rotate(-4deg);opacity:0}to{transform:none;opacity:1}}
+
+/* hero */
+.hero{min-height:100svh;padding:5rem 0 3rem;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-12%;top:-6%;width:70vmin;height:70vmin;background-image:radial-gradient(circle,var(--red) 3px,transparent 3.6px);background-size:16px 16px;-webkit-mask-image:radial-gradient(circle,#000 10%,transparent 68%);mask-image:radial-gradient(circle,#000 10%,transparent 68%);opacity:.85}
+.hero .wrap{position:relative;display:grid;gap:1.6rem}
+.mono{width:clamp(120px,32vw,210px);justify-self:end;margin-bottom:-2.2rem;cursor:pointer;transform:rotate(7deg);transition:transform .3s var(--ease);-webkit-tap-highlight-color:transparent}
+.mono:hover{transform:rotate(-3deg) scale(1.05)}
+.mono text{font-family:var(--display)}
+.name{font-size:clamp(4.2rem,22vw,12.5rem);line-height:.82;text-shadow:5px 5px 0 var(--yellow)}
+.name span{display:block}
+.name span:last-child{margin-left:.35em}
+.hero svg.under{width:min(100%,640px);height:auto;margin-top:-.2rem;overflow:visible}
+.hero .tag{max-width:30ch;font-size:1.5rem;margin-top:.8rem}
+.now{display:inline-block;background:var(--yellow);border:3px solid var(--ink);padding:.3rem .9rem;max-width:36ch;transform:rotate(-1deg);box-shadow:4px 4px 0 var(--ink)}
+.now b{font-family:var(--display);font-weight:400;letter-spacing:.05em;color:var(--red);-webkit-text-stroke:.6px var(--ink)}
+.btns{display:flex;flex-wrap:wrap;gap:1.1rem;margin-top:.8rem}
+
+/* about */
+.about-grid{display:grid;gap:2.4rem}
+.story{padding:1.4rem 1.3rem;max-width:62ch;--r:-.8deg}
+.story p+p{margin-top:.9rem}
+.story p:first-child::first-letter{font-family:var(--display);font-size:3.4rem;float:left;line-height:.8;padding:.2rem .4rem 0 0;color:var(--red)}
+.aside{align-self:start;--r:2deg}
+.aside .bubble{font-size:1.45rem;line-height:1.25}
+.aside small{display:block;margin:1.6rem 0 0 1rem;font-size:1rem}
+
+/* skills */
+.levels{display:grid;gap:1.6rem}
+.lvl{padding:1.1rem 1.2rem 1.4rem}
+.lvl h3{font-size:2rem;margin-bottom:.3rem}
+.lvl p{font-size:1.05rem;margin-bottom:.9rem}
+.tags{display:flex;flex-wrap:wrap;gap:.6rem}
+.tags span{border:3px solid var(--ink);background:#fff;padding:.05rem .8rem;font-size:1.15rem}
+.tags span:nth-child(odd){transform:rotate(-2deg)}
+.tags span:nth-child(3n){transform:rotate(1.5deg);background:var(--yellow)}
+.lvl.a{background:var(--yellow);--r:-1deg}
+.lvl.c{--r:1deg}
+.lvl.b{--r:.5deg}
+
+/* journey */
+.jgrid{display:grid;gap:1.8rem}
+.j{padding:1.2rem 1.3rem 1.4rem}
+.j h3{font-size:2.3rem;margin-bottom:.5rem}
+.j.made{background:var(--red);color:var(--paper)}
+.j.made .cap{color:var(--ink)}
+.j.next{background:var(--yellow);border-style:dashed}
+.j ul{list-style:none;padding:0}
+.j li{padding:.2rem 0 .2rem 1.4rem;position:relative}
+.j li::before{content:"";position:absolute;left:0;top:.7rem;width:.7rem;height:.7rem;background:currentColor;border-radius:50%}
+
+/* beyond code + flip cards */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2.2rem}
+.card{perspective:900px;height:210px;background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left}
+.card .in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s var(--ease)}
+.card[aria-pressed="true"] .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:4px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:.9rem;display:flex;flex-direction:column;justify-content:space-between}
+.front{background:var(--yellow)}
+.front h3{font-size:1.9rem}
+.front i{font-style:normal;font-size:1rem}
+.back{background:#fff;transform:rotateY(180deg);font-size:1.12rem;line-height:1.3}
+.back h3{font-size:1.4rem;color:var(--red)}
+.cards li{list-style:none}
+.cards .card:nth-child(2){margin-top:1.4rem}
+.cards .card:nth-child(3){margin-top:-.6rem}
+.hint{margin-top:1.6rem;font-size:1.05rem}
+
+/* contact */
+.contact{text-align:left}
+.say{font-size:clamp(3.2rem,15vw,8rem);margin-bottom:1.6rem}
+.links{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:2rem}
+footer{padding:2rem 0 3rem;font-family:var(--display);font-size:1.6rem;letter-spacing:.06em;text-align:right}
+footer span{background:var(--ink);color:var(--paper);padding:.1rem .8rem}
+
+/* easter egg */
+#pow{position:fixed;inset:0;z-index:90;display:grid;place-items:center;background:rgba(27,22,18,.55);opacity:0;pointer-events:none;transition:opacity .2s}
+#pow.on{opacity:1;pointer-events:auto}
+#pow .b{position:relative;width:min(88vw,460px);transform:scale(.3) rotate(-14deg);transition:transform .45s var(--ease)}
+#pow.on .b{transform:rotate(-5deg)}
+#pow svg{width:100%;display:block}
+#pow .t{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+#pow h2{font-size:clamp(4rem,22vw,8rem);color:var(--paper);-webkit-text-stroke:3px var(--ink);text-shadow:6px 6px 0 var(--ink)}
+#pow p{font-size:1.2rem;max-width:16ch;margin:0 auto;font-weight:700}
+
+@media (min-width:760px){
+  section{padding:6.5rem 0}
+  .hero .wrap{grid-template-columns:1fr auto;align-items:end}
+  .hero .wrap>.left{grid-column:1}
+  .mono{grid-column:2;grid-row:1;align-self:start;margin:0}
+  .about-grid{grid-template-columns:1.5fr 1fr;gap:3.5rem}
+  .levels{grid-template-columns:1.3fr 1fr 1fr;align-items:start}
+  .lvl.b{margin-top:2.5rem}.lvl.c{margin-top:.8rem}
+  .jgrid{grid-template-columns:repeat(6,1fr)}
+  .j.made{grid-column:1/4}.j.learn{grid-column:4/7;margin-top:2.6rem}.j.next{grid-column:2/6}
+  .cards{grid-template-columns:repeat(4,1fr)}
+  .cards .card:nth-child(2){margin-top:1.8rem}.cards .card:nth-child(3){margin-top:-.4rem}.cards .card:nth-child(4){margin-top:1.4rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;transition-delay:0s!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:rotate(var(--r,0deg))}
+}
+</style>
+</head>
+<body class="lock">
+
+<div id="intro" role="presentation">
+  <button id="skip" class="btn" type="button">Skip</button>
+  <div class="box">
+    <h2>Krishna Selvi</h2>
+    <svg viewBox="0 0 520 40" aria-hidden="true"><path class="draw" pathLength="1" d="M8 24 C70 8 120 34 190 20 S320 6 380 22 S470 30 512 12"/></svg>
+  </div>
+</div>
+
+<main>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="left">
+      <h1 class="name" aria-label="Krishna Selvi"><span>Krishna</span><span>Selvi</span></h1>
+      <svg class="under" viewBox="0 0 640 50" aria-hidden="true"><path class="draw" pathLength="1" d="M6 30 C90 8 160 42 250 24 S420 8 500 28 S590 38 634 14"/><path class="draw" style="stroke:var(--ink);stroke-width:4;transition-delay:.5s" pathLength="1" d="M70 44 C180 34 300 46 420 38"/></svg>
+      <p class="tag">First-year IT student learning to build things that actually work.</p>
+      <p class="now"><b>Currently:</b> getting the basics of programming rock solid, one small project at a time.</p>
+      <div class="btns">
+        <a class="btn red" href="#about">Explore</a>
+        <a class="btn" href="#contact">Say hi</a>
+      </div>
+    </div>
+    <svg class="mono" id="mono" viewBox="0 0 200 200" role="img" aria-label="KS monogram">
+      <polygon id="b1" fill="var(--red)" stroke="var(--ink)" stroke-width="5" transform="translate(7 7)"/>
+      <polygon id="b2" fill="var(--yellow)" stroke="var(--ink)" stroke-width="5"/>
+      <text x="100" y="128" text-anchor="middle" font-size="92" fill="var(--red)" transform="translate(3 3)">KS</text>
+      <text x="100" y="128" text-anchor="middle" font-size="92" fill="var(--ink)">KS</text>
+    </svg>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <span class="cap">Meet the hero</span>
+    <h2 class="sec-title">About me</h2>
+    <div class="about-grid">
+      <div class="panel story reveal">
+        <p>Hi, I'm Krishna. I'm in the first year of my B.Tech in Information Technology, which means I'm at the very beginning of this story, and I like it that way. Everything still feels new.</p>
+        <p>I like knowing how things work underneath before I move on. When a concept finally clicks, that's the best moment of my week, and I'm chasing more of those.</p>
+        <p>This site is one of my first big builds. Every panel, dot and speech bubble here is drawn in code, because I wanted my portfolio to look like me and not like a template.</p>
+      </div>
+      <div class="aside reveal">
+        <div class="bubble">Still at chapter one, and already making a mess of the page margins.</div>
+        <small>Krishna, probably</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <span class="cap">Power levels, honestly</span>
+    <h2 class="sec-title">Skills</h2>
+    <div class="levels">
+      <div class="panel lvl a reveal">
+        <h3>Comfortable</h3>
+        <p>I can sit down and use these without looking everything up.</p>
+        <div class="tags"><span>HTML</span><span>CSS</span><span>Basic C</span></div>
+      </div>
+      <div class="panel lvl b reveal">
+        <h3>Getting there</h3>
+        <p>Works most days, breaks on others.</p>
+        <div class="tags"><span>JavaScript</span><span>Python</span><span>Git</span></div>
+      </div>
+      <div class="panel lvl c reveal">
+        <h3>Learning</h3>
+        <p>New territory, and I'm curious about it.</p>
+        <div class="tags"><span>Data structures</span><span>SQL</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="wrap">
+    <span class="cap">The story so far</span>
+    <h2 class="sec-title">Journey</h2>
+    <div class="jgrid">
+      <article class="panel j made reveal" style="--r:-1deg">
+        <span class="cap">Made</span>
+        <h3>What I've built</h3>
+        <ul><li>This portfolio, in a single HTML file</li><li>Small practice programs from my first-year classes</li></ul>
+      </article>
+      <article class="panel j learn reveal" style="--r:1.2deg">
+        <span class="cap">Learning</span>
+        <h3>What I'm working on</h3>
+        <ul><li>Writing cleaner code in C and Python</li><li>How the web fits together, from request to page</li><li>Using Git without fear</li></ul>
+      </article>
+      <article class="panel j next reveal" style="--r:-.6deg">
+        <span class="cap">Next issue</span>
+        <h3>What I want to build</h3>
+        <ul><li>A small app that solves a problem I've actually run into</li><li>A project I build together with classmates</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="beyond">
+  <div class="wrap">
+    <span class="cap">Between the panels</span>
+    <h2 class="sec-title">Beyond code</h2>
+    <div class="bubble reveal" style="max-width:36ch;--r:-1deg">There's more to me than a terminal window. Tap a card to flip it.</div>
+    <ul class="cards">
+      <li><button class="card" aria-pressed="false"><span class="in">
+        <span class="face front"><h3>Plot twist: I'm new</h3><i>tap to flip</i></span>
+        <span class="face back"><h3>Chapter one</h3>I started B.Tech IT this year, so every project here is brand new to me.</span></span></button></li>
+      <li><button class="card" aria-pressed="false"><span class="in">
+        <span class="face front"><h3>How big is this site?</h3><i>tap to flip</i></span>
+        <span class="face back"><h3>One file</h3>No images at all. Every dot, bubble and drawing is CSS or SVG.</span></span></button></li>
+      <li><button class="card" aria-pressed="false"><span class="in">
+        <span class="face front"><h3>My other hobby</h3><i>tap to flip</i></span>
+        <span class="face back"><h3>Your turn</h3>Replace this with something real about you: music, sport, food, anything.</span></span></button></li>
+      <li><button class="card" aria-pressed="false"><span class="in">
+        <span class="face front"><h3>Fun fact</h3><i>tap to flip</i></span>
+        <span class="face back"><h3>Your turn</h3>Add a fun fact only your friends know. This card is waiting for it.</span></span></button></li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <span class="cap">Final panel</span>
+    <h2 class="say">Say hi!</h2>
+    <div class="bubble reveal" style="max-width:34ch">Got a project, a question, or just want to talk code? I read everything.</div>
+    <div class="links">
+      <a class="btn red" href="mailto:hello@example.com">Email</a>
+      <a class="btn" href="https://www.linkedin.com/in/your-name" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/your-name" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><span>To be continued...</span></footer>
+
+<div id="pow" role="dialog" aria-label="Secret panel" aria-hidden="true">
+  <div class="b">
+    <svg viewBox="0 0 200 200" aria-hidden="true"><polygon id="b3" fill="var(--red)" stroke="var(--ink)" stroke-width="5"/></svg>
+    <div class="t"><h2>POW!</h2><p>You found the secret panel.</p></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // starburst points
+  function burst(n, r1, r2){
+    var p = [], i, a, r;
+    for(i = 0; i < n * 2; i++){
+      a = Math.PI * i / n;
+      r = (i % 2 ? r2 : r1) + (i % 4 === 0 ? 4 : 0);
+      p.push((100 + Math.cos(a) * r).toFixed(1) + ',' + (100 + Math.sin(a) * r).toFixed(1));
+    }
+    return p.join(' ');
+  }
+  document.getElementById('b1').setAttribute('points', burst(14, 92, 66));
+  document.getElementById('b2').setAttribute('points', burst(14, 92, 66));
+  document.getElementById('b3').setAttribute('points', burst(12, 98, 62));
+
+  // opening
+  var intro = document.getElementById('intro'), done = false;
+  function finish(){
+    if(done) return; done = true;
+    intro.classList.add('hide');
+    document.body.classList.remove('lock');
+    document.getElementById('top').classList.add('go');
+    setTimeout(function(){ intro.style.display = 'none'; }, reduce ? 0 : 520);
+  }
+  if(reduce){ intro.style.display = 'none'; done = true; document.body.classList.remove('lock'); document.getElementById('top').classList.add('go'); }
+  else {
+    intro.classList.add('go');
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ intro.classList.add('go'); }); });
+    setTimeout(finish, 1900);
+  }
+  document.getElementById('skip').addEventListener('click', finish);
+
+  // reveal on scroll
+  var items = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:.15});
+    items.forEach(function(el){ io.observe(el); });
+  } else items.forEach(function(el){ el.classList.add('in'); });
+
+  // flip cards
+  document.querySelectorAll('.card').forEach(function(c){
+    c.addEventListener('click', function(){
+      c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    });
+  });
+
+  // easter egg: tap the KS monogram three times
+  var pow = document.getElementById('pow'), taps = 0, timer;
+  function closePow(){ pow.classList.remove('on'); pow.setAttribute('aria-hidden', 'true'); }
+  document.getElementById('mono').addEventListener('click', function(){
+    taps++; clearTimeout(timer);
+    timer = setTimeout(function(){ taps = 0; }, 900);
+    if(taps >= 3){
+      taps = 0;
+      pow.classList.add('on'); pow.setAttribute('aria-hidden', 'false');
+      setTimeout(closePow, 2600);
+    }
+  });
+  pow.addEventListener('click', closePow);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closePow(); });
+})();
+</script>
+</body>
+</html>
